@@ -157,3 +157,10 @@ Handling scenarios like the one above involved error-checking code similar to th
 * Updated the contestant's data in the DynamoDB table.
 * Created or updated an inventory list attribute.
 * Returned the updated inventory.
+
+<br>
+---
+<br>
+
+# Final Comments
+I thoroughly enjoyed every part of this project and could see myself working on more Backend Projects in the Industry Track like this! Thank you for the amazing learning opportunity from this Technical Interview!
