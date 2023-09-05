@@ -46,7 +46,7 @@ Attributes:
 <br>
 
 # DISCUSSION ON CHALLENGING ASPECTS
-While most of this project's tasks were pretty straightforward, I discovered on the following challenges:
+While most of this project's tasks were easy and straightforward, I discovered on the following challenges:
 
 **Using Parameters Instead of Response Body (JSON)**:
 * Issue: Initially, I set up the API routes to use Parameters to handle the data. This worked just fine in FastAPI, where I could easily define the parameters using the Text Entry Form provided. However, when I tested the routes in Postman, I realized they didn't match the project's specs. The project required using the Request Body for the API routes instead of Parameters. Example:
@@ -55,7 +55,7 @@ While most of this project's tasks were pretty straightforward, I discovered on 
         async def register_contestant(contestantName: str, husbandName: str, vocalRange: int,  location: int)
           ...
       ```
-* Solution: Drawing from a similar project I worked on during my internship and diving into FastAPI documentation, I implemented BaseModels in the Pydantic module. I created two BaseModels, `ContestantRegistration(BaseModel)` and `PowerUpItem(BaseModel)`, in a file called `models.py`. Using BaseModels allowed me to automatically get the required attributes from the project specs without explicitly defining them as parameters. Example:
+* Solution: Drawing from a similar project I worked on during my internship and diving into FastAPI documentation, I implemented BaseModels in the Pydantic module. I created two BaseModels, `ContestantRegistration(BaseModel)` and `PowerUpItem(BaseModel)`, in a file called `models.py`. Using BaseModels allowed me to automatically get the required attributes from the project specs without explicitly defining them as parameters. This was an easy fix. Example:
     * ```python
         @app.post("/contestants")
         async def register_contestant(contestant: ContestantRegistration):
@@ -72,7 +72,7 @@ While most of this project's tasks were pretty straightforward, I discovered on 
         async def husband_call_and_score(contestantName: str):
           ...
       ```
-* Solution: I remembered a similar task from my internship and did some more reading in the FastAPI documentation. That's when I figured out I needed to use the Request module from FastAPI to fetch the contestantName attribute from the URL. Example:
+* Solution: Fortunately, this too is also an easy fix. I remembered a similar task from my internship and did some more reading in the FastAPI documentation. That's when I figured out I needed to use the Request module from FastAPI to fetch the contestantName attribute from the URL. Example:
     * ```python
         @app.get("/husbandCall/{contestantName}")
         async def husband_call_and_score(request: Request):
